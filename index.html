@@ -819,7 +819,11 @@ const input = document.getElementById("postcode");
 const result = document.getElementById("result");
 
 input.addEventListener("input", () => {
-    input.value = input.value.replace(/\D/g, "").slice(0, 5);
+    input.value = input.value.replace(/\D/g, "");
+
+    if (input.value.length > 5) {
+        input.value = input.value.slice(-1);
+    }
 
     if (input.value.length < 5) {
         result.textContent = "";
